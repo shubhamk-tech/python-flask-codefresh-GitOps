@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: codefresh-deployment
+  namespace: codefresh  
+  labels:
+    app: codefresh
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: codefresh
+  template:
+    metadata:
+      labels:
+        app: codefresh
+    spec:
+      containers:
+      - name: codefresh-cotainer
+        image: shubhz1452/codefresh-app:latest
+        ports:
+        - containerPort: 5000
